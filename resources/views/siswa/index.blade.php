@@ -27,7 +27,7 @@
         </tbody>
       </table>
     @else
-        <P>tidak ada data siswa</P>
+        <P>tidak ada data siswaas</P>
     @endif
     <div class="pull-left">
     <strong>jumlah siswa : {{$jumlahsiswa}}</strong>
