@@ -21,6 +21,7 @@
                 <td>{{$list->nama_siswa}}</td>
                 <td>{{$list->tanggal_lahir}}</td>
                 <td>{{$list->jenis_kelamin}}</td>
+                <td><a href="siswa/{{$list->id}}" class="btn btn-success btn-sm">Detail</a></td>
                 </tr>
             @endforeach
         </tbody>
