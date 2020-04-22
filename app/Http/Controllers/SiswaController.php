@@ -14,18 +14,33 @@ class SiswaController extends Controller
     }
     public function create ()
     {
-        return view('siswa.create');
+        $halaman = "siswa";
+        return view('siswa.create',compact('halaman'));
     }
     protected $request;
     public function __construct(Request $req)
     {
         $this->request = $req;
     }
-    public function store()
+    public function store(Request $request)
     {
-        $data = $this->request;
-        $siswa = $data->all();
-        return $siswa;
+    //   $siswa = new Siswa;
+    //   $siswa->nisn              = $request->nisn;
+    //   $siswa->nama_siswa        = $request->nama_siswa;      //Cara ribet panjang bener
+    //   $siswa->tanggal_lahir     = $request->tanggal_lahir;
+    //   $siswa->jenis_kelamin     = $request->jenis_kelamin;
+    //   $siswa->save();
 
+    // $input = $request->all();
+    // Siswa::create($input);       //Cara 2 lumayan simpel
+
+    Siswa::create($request->all()); //Cara simpel banget
+      return redirect('siswa');
+    }
+    public function show($id)
+    {
+        $halaman = 'siswa';
+        $siswa = siswa::findorfail($id);
+        return view('siswa.show',compact('halaman','siswa'));
     }
 }

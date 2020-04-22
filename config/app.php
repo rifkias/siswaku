@@ -168,6 +168,8 @@ return [
          */
         //Paket laravel collective
         Collective\Html\HtmlServiceProvider::class,
+        //SiswakuServiceProviders
+        App\Providers\SiswakuAppServiceProvider::class,
         /*
          * Application Service Providers...
          */

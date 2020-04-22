@@ -70,7 +70,5 @@
 @endsection
 
 @section('footer')
-    <div id="footer">
-    <p>&copy; 2020 SiswakuApp</p>
-    </div>
+    @include('footer')
 @endsection

@@ -8,7 +8,5 @@
 @endsection
 
 @section('footer')
-    <div id="footer">
-        <p>&copy; 2020 Laravelapp.dev</p>
-    </div>
+    @include('footer')
 @endsection

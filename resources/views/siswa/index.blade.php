@@ -25,18 +25,28 @@
                 </tr>
             @endforeach
         </tbody>
+
       </table>
     @else
         <P>tidak ada data siswa</P>
     @endif
-    <div class="pull-left">
-    <strong>jumlah siswa : {{$jumlahsiswa}}</strong>
+    <div class="table-bottom">
+        <div class="pull-left">
+        <strong>jumlah siswa : {{$jumlahsiswa}}</strong>
+        </div>
+        <div class="pull-right">
+            pagination
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div>
+            <a href="siswa/create" class="btn btn-primary">Tambah Siswa</a>
+        </div>
     </div>
 </div>
 @endsection
 
 @section('footer')
-    <div id="footer">
-        <p>&copy; 2020 siswaku.app</p>
-    </div>
+    @include('footer')
 @endsection
