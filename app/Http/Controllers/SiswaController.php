@@ -43,4 +43,17 @@ class SiswaController extends Controller
         $siswa = siswa::findorfail($id);
         return view('siswa.show',compact('halaman','siswa'));
     }
+
+    public function edit($id)
+    {
+        $siswa = Siswa::findorfail($id);
+        return view('siswa.edit',compact('siswa'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $siswa = Siswa::FindOrFail($id);
+        $siswa->update($request->all());
+        return redirect('siswa');
+    }
 }

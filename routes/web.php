@@ -30,6 +30,6 @@ Route::get('siswa/create','SiswaController@create');
 Route::post('siswa','SiswaController@store');
 Route::get('siswa/{siswa}', 'SiswaController@show');
 Route::get('siswa/{siswa}/edit', 'SiswaController@edit');
-Route::put('siswa/{siswa}', 'SiswaController@update');
+Route::patch('siswa/{siswa}', 'SiswaController@update');
 Route::delete('users/{siswa}', 'SiswaController@destroy');
 

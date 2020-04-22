@@ -37,7 +37,7 @@
     </div> --}}
     <div id="siswa">
         <h2>Tambah Siswa</h2>
-        {!! Form::open(['url'=>'siswa']) !!}
+        {{-- {!! Form::open(['url'=>'siswa']) !!}
     @csrf
     <div class="form-group">
         {!!  Form::label('nisn', 'NISN:', ['class'=>'control-label']) !!}
@@ -65,6 +65,13 @@
         {!! Form::submit('Tambah Siswa', ['class'=>'btn btn-primary form-control']) !!}
     </div>
 
+    {!! Form::close() !!} --}}
+
+    {{-- Cara Simpel --}}
+
+    {!! Form::open(['url'=>'siswa']) !!}
+    @csrf
+    @include('siswa.form',['submitbuttontext'=>'Simpan'])
     {!! Form::close() !!}
     </div>
 @endsection

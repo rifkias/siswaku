@@ -21,7 +21,20 @@
                 <td>{{$list->nama_siswa}}</td>
                 <td>{{$list->tanggal_lahir}}</td>
                 <td>{{$list->jenis_kelamin}}</td>
-                <td><a href="siswa/{{$list->id}}" class="btn btn-success btn-sm">Detail</a></td>
+                <td>
+                    <div class="box-button">
+                        <a href="siswa/{{$list->id}}" class="btn btn-success btn-sm">Detail</a>
+                    </div>
+                    <div class="box-button">
+                        {!! link_to('siswa/'. $list->id . '/edit','Edit', ['class' => 'btn btn-success btn-sm']) !!}
+                    </div>
+                    <div class="box-button">
+                        {!! Form::open(['method'=>'DELETE','action'=>['SiswaController@destroy',$list->id]]) !!}
+                        {!! Form::submit('Delete', ['class'=>'btn btn-danger btn-sm']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                </td>
+
                 </tr>
             @endforeach
         </tbody>
