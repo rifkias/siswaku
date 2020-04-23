@@ -43,16 +43,16 @@
     @else
         <P>tidak ada data siswa</P>
     @endif
-    <div class="table-bottom">
-        <div class="pull-left">
-        <strong>jumlah siswa : {{$jumlahsiswa}}</strong>
+    <div class=" {{--table-bottom--}} table-nav">
+        <div class="{{--pull-left--}} jumlah-data">
+            <strong>jumlah siswa : {{$jumlahsiswa}}</strong>
         </div>
-        <div class="pull-right">
-            pagination
+        <div class="{{--pull-right--}} paging">
+            {{$siswas->links()}}
         </div>
     </div>
 
-    <div class="bottom-nav">
+    <div class="{{--bottom-nav--}}tombol-nav">
         <div>
             <a href="siswa/create" class="btn btn-primary">Tambah Siswa</a>
         </div>

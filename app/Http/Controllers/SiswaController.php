@@ -8,7 +8,7 @@ class SiswaController extends Controller
 {
     public function index() {
         $halaman = 'siswa';
-        $siswas = Siswa::all()->sortBy('nama_siswa');
+        $siswas = Siswa::orderBy('nama_siswa','asc')->Paginate(2);
         $jumlahsiswa = $siswas->count();
         return view('siswa.index',compact('halaman','siswas','jumlahsiswa'));
     }
@@ -54,6 +54,12 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::FindOrFail($id);
         $siswa->update($request->all());
+        return redirect('siswa');
+    }
+    public function destroy($id)
+    {
+        $siswa = Siswa::FindOrFail($id);
+        $siswa->delete();
         return redirect('siswa');
     }
 }
