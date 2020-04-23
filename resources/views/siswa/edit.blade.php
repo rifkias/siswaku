@@ -33,7 +33,7 @@
     {{-- Cara Simpel menggunakan form --}}
     {!! Form::model($siswa, ['method'=>'PATCH', 'action' => ['SiswaController@update',$siswa->id]]) !!}
         @include('siswa.form',['submitbuttontext'=>'Update'])
-    {!! Form::close() !!} --}}
+    {!! Form::close() !!}
 @endsection
 @section('footer')
     @include('footer')

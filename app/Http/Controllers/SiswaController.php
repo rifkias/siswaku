@@ -8,7 +8,7 @@ class SiswaController extends Controller
 {
     public function index() {
         $halaman = 'siswa';
-        $siswas = Siswa::orderBy('nama_siswa','asc')->Paginate(2);
+        $siswas = Siswa::orderBy('nama_siswa','asc')->Paginate(10);
         $jumlahsiswa = $siswas->count();
         return view('siswa.index',compact('halaman','siswas','jumlahsiswa'));
     }
@@ -62,8 +62,9 @@ class SiswaController extends Controller
         $siswa->delete();
         return redirect('siswa');
     }
-    public function testCollection()
-    {
+    //Isi Pembelajaran Eloquent:Collection
+    //public function testCollection()
+    //{
         //========================== Eloquent : Collection
         // $orang = ['rasmus lerdorf','taylor otwell','brendan eich','john resig'];
         // $collection = collect($orang)->map(function($nama){
@@ -94,9 +95,26 @@ class SiswaController extends Controller
             //     echo $siswa['nisn'] . '-' . $siswa['nama_siswa'] . "<br>";
             // }
         //toJSON => membuat data membentuk JSON
-            $data = [
-                ['nisn'=>'1001', 'nama_siswa'=>'Agus Yulianto2'],
-                ['nisn'=>'1002', 'nama_siswa' => 'Bayu Firmansyah']
-            ];
+            // $data = [
+            //     ['nisn'=>'1001', 'nama_siswa'=>'Agus Yulianto2'],
+            //     ['nisn'=>'1002', 'nama_siswa' => 'Bayu Firmansyah']
+            // ];
+    //}
+    public function dateMutator()
+    {
+        //Data Created at / Updated_at akan otomatis diubah menjadi instance dari carbon
+        // $siswa = Siswa::findOrFail(6);
+        // dd($siswa->created_at);
+
+        //Mengubah tanggal lahir menjadi instance carbon
+        //$siswa = Siswa::findOrFail(2);
+        //age=>salah satu getter dari carbon untuk mendapatkan umur dari suatu tanggal dengan tanggal saat ini
+        //return "Umur {$siswa->nama_siswa} adalah {$siswa->tanggal_lahir->age} tahun";
+
+        $siswa = Siswa::findorfail(1);
+        $nama = $siswa->nama_siswa;
+        $tanggal_lahir = $siswa->tanggal_lahir->format('d-m-Y');
+        $ulang_tahun = $siswa->tanggal_lahir->addYears(30)->format('d-m-Y');
+        return "Siswa {$nama} lahir pada {$tanggal_lahir}. <br> Ulang tahun ke 30 akan jatuh pada {$ulang_tahun}.";
     }
 }

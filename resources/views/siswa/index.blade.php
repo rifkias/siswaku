@@ -19,7 +19,7 @@
                 <tr>
                 <td>{{$list->nisn}}</td>
                 <td>{{$list->nama_siswa}}</td>
-                <td>{{$list->tanggal_lahir}}</td>
+                <td>{{$list->tanggal_lahir->format('d-m-Y')}}</td>
                 <td>{{$list->jenis_kelamin}}</td>
                 <td>
                     <div class="box-button">

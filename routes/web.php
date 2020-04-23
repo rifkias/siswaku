@@ -34,4 +34,6 @@ Route::get('siswa/{siswa}', 'SiswaController@show');
 Route::get('siswa/{siswa}/edit', 'SiswaController@edit');
 Route::patch('siswa/{siswa}', 'SiswaController@update');
 Route::delete('users/{siswa}', 'SiswaController@destroy');
-Route::get('tes-collection','SiswaController@testCollection');
+//belajar Eloquent:Collection
+// Route::get('tes-collection','SiswaController@testCollection');
+Route::get('date-mutator', 'SiswaController@dateMutator');

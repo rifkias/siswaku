@@ -9,7 +9,11 @@
 </div>
 <div class="form-group">
     {!! Form::label('tanggal_lahir', 'Tanggal Lahir:', ['class'=> 'control-label']) !!}
-    {!! Form::date('tanggal_lahir',null, ['class'=>'form-control','id'=>'tanggal_lahir']) !!}
+    {{-- {!! Form::date('tanggal_lahir',null, ['class'=>'form-control','id'=>'tanggal_lahir']) !!} --}}
+    {{-- Tambahannya dikarenakan tanggal lahir sudah termasuk ke dalam instance dari carbon,karena inout date hanya menerima data tanggal dengan format Y-m-d sedang kan format carbon tidak seperti itu  --}}
+
+    {{-- alur proses => jika data siswa tidak kosong maka tanggal lahir dari data base diformat Y-m-d agar dapat dikenali oleh input date ,tetapi jika kosong berikan nilai null untuk tanggal lahir agar tidak muncul error ketika sedang proses insert data--}}
+    {!! Form::date('tanggal_lahir',!empty($siswa) ? $siswa->tanggal_lahir->format('Y-m-d'):null ,['class'=>'form-control','id'=>'tanggal_lahir']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('jenis_kelamin', 'Jenis Kelamin', ['class'=>'control-label']) !!}
