@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\SiswaController;
+
 Route::get('/', 'PagesController@homepage');
 
 Route::get('about', 'PagesController@about');
@@ -32,4 +34,4 @@ Route::get('siswa/{siswa}', 'SiswaController@show');
 Route::get('siswa/{siswa}/edit', 'SiswaController@edit');
 Route::patch('siswa/{siswa}', 'SiswaController@update');
 Route::delete('users/{siswa}', 'SiswaController@destroy');
-
+Route::get('tes-collection','SiswaController@testCollection');

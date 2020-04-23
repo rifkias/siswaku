@@ -62,4 +62,41 @@ class SiswaController extends Controller
         $siswa->delete();
         return redirect('siswa');
     }
+    public function testCollection()
+    {
+        //========================== Eloquent : Collection
+        // $orang = ['rasmus lerdorf','taylor otwell','brendan eich','john resig'];
+        // $collection = collect($orang)->map(function($nama){
+        //     return ucwords($nama);
+        // });
+        //First
+            //$collection = Siswa::all()->first();
+        //Last
+            //$collection = Siswa::all()->last();
+        //Count
+            //$collection = Siswa::all();
+            //$jumlah = $collection->count();
+        //Take
+            //$collection = Siswa::all()->take(2);
+        //Pluck
+            //$collection = Siswa::all()->pluck('nama_siswa');
+        //Where
+            // $collection = Siswa::all();
+            // $collection = $collection->where('nisn','1004');
+        //WhereIn => Penyeleksian dengan range tertentu
+            // $collection = Siswa::all();
+            // $collection = $collection->whereIn('nisn',['1001','1003','1009']);
+            // return $collection;
+        //toArray => Agar data yang kita dapat menjadi array
+            // $collection = Siswa::select('nisn','nama_siswa')->take(3)->get();
+            // $koleksi = $collection->toarray();
+            // foreach ($koleksi as $siswa) {
+            //     echo $siswa['nisn'] . '-' . $siswa['nama_siswa'] . "<br>";
+            // }
+        //toJSON => membuat data membentuk JSON
+            $data = [
+                ['nisn'=>'1001', 'nama_siswa'=>'Agus Yulianto2'],
+                ['nisn'=>'1002', 'nama_siswa' => 'Bayu Firmansyah']
+            ];
+    }
 }
