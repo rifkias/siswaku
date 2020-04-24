@@ -1,8 +1,11 @@
 @extends('template')
 
 @section('main')
+<div id="siswa">
+    <h2>Tambah Siswa</h2>
+{{-- cara 1 --}}
     {{-- <div id="siswa">
-        <h2>Tambah Siswa</h2>
+
     <form action="{{url('siswa')}}" method="post">
     @csrf
     <div class="form-group">
@@ -35,8 +38,8 @@
     </div>
     </form>
     </div> --}}
-    <div id="siswa">
-        <h2>Tambah Siswa</h2>
+{{-- Cara 2 --}}
+
         {{-- {!! Form::open(['url'=>'siswa']) !!}
     @csrf
     <div class="form-group">

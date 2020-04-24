@@ -21,6 +21,7 @@ class Siswa extends Model
     public function setNamaSiswaAttribute($nama_siswa)
     {
         //cara buku
+        //Setelah dicoba" sering terjadi masalah makanya yang dipake yang bawaan laravel :) sialan ni buku mana kaga bisa nanya lagi
         //return strtolower($nama_siswa);
         //Cara laravel
         $this->attributes['nama_siswa'] = strtolower($nama_siswa);

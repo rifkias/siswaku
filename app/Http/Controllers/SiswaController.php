@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Siswa;
+use Validator;
 class SiswaController extends Controller
 {
     public function index() {
@@ -34,8 +35,23 @@ class SiswaController extends Controller
     // $input = $request->all();
     // Siswa::create($input);       //Cara 2 lumayan simpel
 
-    Siswa::create($request->all()); //Cara simpel banget
-      return redirect('siswa');
+    // Siswa::create($request->all()); //Cara simpel banget
+    //   return redirect('siswa');
+
+    //dengan validator
+    $input = $request->all();
+    $validator = Validator::make($input,[
+        'nisn'          => 'required|string|size:4|unique:siswa,nisn',
+        'nama_siswa'    => 'required|string|max:30',
+        'tanggal_lahir' => 'required|date',
+        'jenis_kelamin' => 'required|in:L,P'
+    ]);
+    if ($validator->fails()){
+        return redirect('siswa/create')->withInput()->withErrors($validator);
+    }
+    Siswa::create($input);
+
+    return redirect('siswa');
     }
     public function show($id)
     {
