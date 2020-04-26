@@ -1,4 +1,9 @@
-    @if ($errors->any())
+   {{-- Agar nisn tidak harus diganti ketika proses update --}}
+   @if (isset($siswa))
+       {!! Form::hidden('id', $siswa->id) !!}
+   @endif
+
+   @if ($errors->any())
         <div class="form-group {{$errors->has('nisn') ? 'has-error' : 'has-success'}}">
     @else
         <div class="form-group">
