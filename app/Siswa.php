@@ -26,4 +26,8 @@ class Siswa extends Model
         //Cara laravel
         $this->attributes['nama_siswa'] = strtolower($nama_siswa);
     }
+    public function telepon()
+    {
+        return $this->hasOne('App\Telepon','id_siswa');
+    }
 }
