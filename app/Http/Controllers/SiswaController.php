@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Siswa;
+use App\Telepon;
 use Validator;
 class SiswaController extends Controller
 {
     public function index() {
         $halaman = 'siswa';
         $siswas = Siswa::orderBy('nama_siswa','asc')->Paginate(10);
-        $jumlahsiswa = $siswas->count();
+        $jumlahsiswa = Siswa::all()->count();
         return view('siswa.index',compact('halaman','siswas','jumlahsiswa'));
     }
     public function create ()
@@ -44,12 +45,17 @@ class SiswaController extends Controller
         'nisn'          => 'required|string|size:4|unique:siswa,nisn',
         'nama_siswa'    => 'required|string|max:30',
         'tanggal_lahir' => 'required|date',
-        'jenis_kelamin' => 'required|in:L,P'
+        'jenis_kelamin' => 'required|in:L,P',
+        'nomor_telepon' => 'sometimes|numeric|nullable|digits_between:10,15|unique:telepon,nomor_telepon',
     ]);
     if ($validator->fails()){
         return redirect('siswa/create')->withInput()->withErrors($validator);
     }
-    Siswa::create($input);
+
+    $siswa = Siswa::create($input);
+    $telepon = new Telepon();
+    $telepon->nomor_telepon = $request->input('nomor_telepon');
+    $siswa->telepon()->save($telepon);
 
     return redirect('siswa');
     }
