@@ -8,7 +8,7 @@ class Siswa extends Model
 {
     protected $table = 'siswa';
     protected $fillable = [
-        'nisn','nama_siswa','tanggal_lahir','jenis_kelamin'
+        'nisn','nama_siswa','tanggal_lahir','jenis_kelamin','id_kelas'
     ];
     //Mengkonversi kolom tanggal_lahir menjadi instance dari Carbon => menambahkan kolom di variabel dates
     protected $dates = ['tanggal_lahir'];
@@ -29,5 +29,10 @@ class Siswa extends Model
     public function telepon()
     {
         return $this->hasOne('App\Telepon','id_siswa');
+    }
+
+    public function kelas()
+    {
+        return $this->belongsTo('App\Kelas','id_kelas');
     }
 }

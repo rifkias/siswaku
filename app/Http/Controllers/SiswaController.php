@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kelas;
 use Illuminate\Http\Request;
 use App\Siswa;
 use App\Telepon;
@@ -17,7 +18,8 @@ class SiswaController extends Controller
     public function create ()
     {
         $halaman = "siswa";
-        return view('siswa.create',compact('halaman'));
+        $list_kelas = Kelas::pluck('nama_kelas','id');
+        return view('siswa.create',compact('halaman','list_kelas'));
     }
     protected $request;
     public function __construct(Request $req)
@@ -47,6 +49,7 @@ class SiswaController extends Controller
         'tanggal_lahir' => 'required|date',
         'jenis_kelamin' => 'required|in:L,P',
         'nomor_telepon' => 'sometimes|numeric|nullable|digits_between:10,15|unique:telepon,nomor_telepon',
+        'id_kelas'      => 'required',
     ]);
     if ($validator->fails()){
         return redirect('siswa/create')->withInput()->withErrors($validator);

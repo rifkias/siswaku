@@ -9,6 +9,7 @@
             <tr>
                 <th>Nisn</th>
                 <th>Nama</th>
+                <th>Kelas</th>
                 <th>Tgl Lahir</th>
                 <th>JK</th>
                 <th>Telepon</th>
@@ -20,6 +21,7 @@
                 <tr>
                 <td>{{$list->nisn}}</td>
                 <td>{{$list->nama_siswa}}</td>
+                <td>{{$list->kelas->nama_kelas}}</td>
                 <td>{{$list->tanggal_lahir->format('d-m-Y')}}</td>
                 <td>{{$list->jenis_kelamin}}</td>
                 <td>{{ !empty($list->telepon->nomor_telepon) ? $list->telepon->nomor_telepon : '-'}}</td>
